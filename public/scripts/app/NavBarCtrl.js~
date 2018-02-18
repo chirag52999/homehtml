@@ -1,0 +1,65 @@
+define(['angular'],function(angular){
+    'use strict';
+    var NavBarCtrl = angular.module('NavBarCtrl', []);
+    NavBarCtrl.controller('NavBarCtrl', ['$scope', '$location','$window','$cookieStore','LoginServices',
+        function ($scope,$location,$window,$cookieStore,LoginServices) {
+            console.log("in NavBarCtrl");
+
+
+            $scope.isActive = function (viewLocation) {
+                var loc=$location.path();
+
+                return (viewLocation ===  loc);
+               
+
+            };
+
+             //Logout Functionality
+            $scope.logoutSuccess = function(data, status, headers, config){
+                    if (data.data.status === "success") {
+                        //Clearing Chache created by remember me
+                        // delete token in session storage
+                        delete $window.sessionStorage.token;
+                        // delete token cookie
+                        $cookieStore.remove("token");
+                        $location.path("/login");
+                        $log.info("Logout Successfull");
+                    }else {
+//						FlashService.Error(response.message);
+                        $log.info("Logout Failure: Network Issue");
+                        }
+                }
+            $scope.logoutFail = function(data, status, headers, config){
+                $log.info("Server messages/ Connection is still open");
+                }
+            $scope.logoutController = function(){
+                    console.log("in Logout Controller");
+                    var user = {"username": "$scope.username", "password": "$scope.password"};
+                    LoginServices.logoutApi(user,$scope.logoutSuccess,$scope.logoutFail);
+                }
+            // Logout Functionality ENDS--
+            
+            // function getPageLoc(data)
+            // {
+            //     var loc=$location.path();
+            //     var onlyId= loc.split("/");
+            //     console.log("here is the location -----", onlyId[onlyId.length-1]);
+            //     if ( onlyId[onlyId.length-1]=="home")
+            //     {
+            //         console.log("matched");
+            //
+            //     }
+            //     else
+            //     {
+            //         console.log("unmatched");
+            //
+            //     }
+            //
+            //
+            // }
+
+        }
+        
+    ]);
+
+});

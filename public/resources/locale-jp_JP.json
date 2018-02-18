@@ -1,0 +1,23 @@
+{
+  "dspp": {
+    "nav_bar": {
+      "salutation":"今日は",
+      "sign_out": "サインアウト",
+      "profile":"プロフィール",
+      "home":"自宅",
+      "new": "新",
+      "my_ads": "広告",
+      "dashboard": "計器盤",
+      "cm": "クライアント モニタリング",
+      "resource": "リソース"
+    },
+    "login_view": {
+      "title":"ログイン",
+      "user_name_hint": "ユーザー名",
+      "password_hint": "パスワード",
+      "login_button_text": "ログイン",
+      "rem_me": "覚えています ユーザー名",
+      "forgot": "忘れていた パスワード?"
+    }
+  }
+}

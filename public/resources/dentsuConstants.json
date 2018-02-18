@@ -1,0 +1,7 @@
+{
+  "appSpecific":{
+    "currentVersion":3,
+    "mobileAdIdBatchSize":1000,
+    "passCodesBatchSize":1000
+  }
+}

@@ -1,0 +1,217 @@
+<<<<<<< HEAD
+
+define([
+    'angular',
+	'angularLocalStorage',
+    'angularRoute',
+
+    'tmh.dynamicLocale',
+    'LoginCtrl',
+    'HomeCtrl',
+    'NavBarCtrl',
+    'FishBarCtrl',
+    'LoginServices',
+    'NewTargetStandardCtrl'
+
+
+    
+
+], function (angular) {
+    'use strict';
+
+    var mainApp =  angular.module('mainApp', [
+        'ngRoute',
+		'LocalStorageModule',
+        'tmh.dynamicLocale',
+        'LoginCtrl',
+        'HomeCtrl',
+        'NavBarCtrl',
+        'FishBarCtrl',
+        'LoginServices',
+        'NewTargetStandardCtrl'
+
+		
+    ]);
+
+    mainApp.constant('LOCALES', {
+        'locales': {
+            'jp_JP': '日本語',
+            'en_US': 'English'
+        },
+        'preferredLocale': 'en_US'
+    });
+
+
+    mainApp.config(['$httpProvider','$logProvider', 'tmhDynamicLocaleProvider',
+        function ($httpProvider, $logProvider, tmhDynamicLocaleProvider) {
+            $logProvider.debugEnabled(true);
+            // $translateProvider.useMissingTranslationHandlerLog();
+            // $translateProvider.useStaticFilesLoader({
+            //     prefix: 'resources/locale-',// path to translations files
+            //     suffix: '.json'// suffix, currently- extension of the translations
+            // });
+            // $translateProvider.preferredLanguage('en_US');// is applied on first load
+            // $translateProvider.useLocalStorage();//
+            // tmhDynamicLocaleProvider.localeLocationPattern('/angular/i18n/angular-locale_{{locale}}.js');
+
+
+    }]);
+
+
+    mainApp.config(['$routeProvider',
+        function($routeProvider) {
+            $routeProvider.
+            when('/login', {
+                templateUrl: 'partials/login.html',
+                controller: 'LoginCtrl',
+                access: { requiredLogin: false }
+            }).
+            when('/home', {
+                templateUrl: 'partials/home.html',
+                controller: 'HomeCtrl',
+                access: { requiredLogin: false }
+            }).
+            when('/new', {
+                templateUrl: 'partials/new.html',
+                controller: 'LoginCtrl',
+                access: { requiredLogin: false }
+            }).
+            when('/newtargetstandard', {
+                templateUrl: 'partials/newtargetstandard.html',
+                controller: 'NewTargetStandardCtrl',
+                access: { requiredLogin: false }
+            }).
+                otherwise({
+                    redirectTo: '/login'
+                });
+        }
+
+
+
+    ]);
+
+
+    mainApp.run(['$rootScope','$location',function($rootScope, $location) {
+$rootScope.app = {
+                name: 'Dentsu SPP',
+                description: 'Powered by Chalk Digital',
+                year: ((new Date()).getFullYear()),
+              };
+        console.log("2. Application deployed successfully.\n"+"App Description: "+$rootScope.app.name+"\n"+$rootScope.app.description+"@"+$rootScope.app.year+"\n ===========\n");
+    }]);
+
+    return mainApp;
+
+
+});
+=======
+
+define([
+    'angular',
+	'angularLocalStorage',
+    'angularRoute',
+
+    'tmh.dynamicLocale',
+    'LoginCtrl',
+    'HomeCtrl',
+    'NavBarCtrl',
+    'FishBarCtrl',
+    'LoginServices',
+    'NewTargetStandardCtrl'
+
+
+    
+
+], function (angular) {
+    'use strict';
+
+    var mainApp =  angular.module('mainApp', [
+        'ngRoute',
+		'LocalStorageModule',
+        'tmh.dynamicLocale',
+        'LoginCtrl',
+        'HomeCtrl',
+        'NavBarCtrl',
+        'FishBarCtrl',
+        'LoginServices',
+        'NewTargetStandardCtrl'
+
+		
+    ]);
+
+    mainApp.constant('LOCALES', {
+        'locales': {
+            'jp_JP': '日本語',
+            'en_US': 'English'
+        },
+        'preferredLocale': 'en_US'
+    });
+
+
+    mainApp.config(['$httpProvider','$logProvider', 'tmhDynamicLocaleProvider',
+        function ($httpProvider, $logProvider, tmhDynamicLocaleProvider) {
+            $logProvider.debugEnabled(true);
+            // $translateProvider.useMissingTranslationHandlerLog();
+            // $translateProvider.useStaticFilesLoader({
+            //     prefix: 'resources/locale-',// path to translations files
+            //     suffix: '.json'// suffix, currently- extension of the translations
+            // });
+            // $translateProvider.preferredLanguage('en_US');// is applied on first load
+            // $translateProvider.useLocalStorage();//
+            // tmhDynamicLocaleProvider.localeLocationPattern('/angular/i18n/angular-locale_{{locale}}.js');
+
+
+    }]);
+
+
+    mainApp.config(['$routeProvider',
+        function($routeProvider) {
+            $routeProvider.
+            when('/login', {
+                templateUrl: 'partials/login.html',
+                controller: 'LoginCtrl',
+                access: { requiredLogin: false }
+            }).
+            when('/home', {
+                templateUrl: 'partials/home.html',
+                controller: 'HomeCtrl',
+                access: { requiredLogin: false }
+            }).
+            when('/new', {
+                templateUrl: 'partials/new.html',
+                controller: 'LoginCtrl',
+                access: { requiredLogin: false }
+            }).
+            when('/newtargetstandard', {
+                templateUrl: 'partials/newtargetstandard.html',
+                controller: 'NewTargetStandardCtrl',
+                access: { requiredLogin: false }
+            }).
+                otherwise({
+                    redirectTo: '/login'
+                });
+        }
+
+
+
+    ]);
+
+
+    mainApp.run(['$rootScope','$location',function($rootScope, $location) {
+        console.log("2. Application deployment done.")
+         $rootScope.app = {
+                name: 'Dentsu SPP',
+                description: 'Powered by Chalk Digital',
+                year: ((new Date()).getFullYear()),
+              };
+    }]);
+
+    return mainApp;
+
+
+});
+
+
+
+
+>>>>>>> 06a5094bde9b69212b63e328a63bb1d0d1eea49e

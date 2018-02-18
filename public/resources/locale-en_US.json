@@ -1,0 +1,23 @@
+{
+  "dspp": {
+    "nav_bar": {
+      "salutation":"hello",
+      "sign_out": "SIGN OUT",
+      "profile":"PROFILE",
+      "home":"HOME",
+      "new": "NEW",
+      "my_ads": "MY ADS",
+      "dashboard": "DASHBOARD",
+      "cm": "CLIENT MONITORING",
+      "resource": "RESOURCE"
+    },
+    "login_view": {
+        "title":"LOGIN",
+        "user_name_hint": "USERNAME",
+        "password_hint": "PASSWORD",
+        "login_button_text": "LOGIN",
+        "rem_me": "Remember Username",
+        "forgot": "Forgot Password?"
+    }
+  }
+}

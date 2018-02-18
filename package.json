@@ -1,0 +1,26 @@
+{
+  "name": "Dentsu-SPP",
+  "version": "0.0.1",
+  "private": true,
+  "main": "views/index.html",
+  "dependencies": {
+    "aws-sdk": "^2.100.0",
+    "cors": "^2.8.4",
+    "ejs": "^2.5.7",
+    "express": "~3.2.6",
+    "fs": "0.0.2",
+    "grunt": "*",
+    "grunt-bower-installer": "*",
+    "grunt-contrib-requirejs": "*",
+    "grunt-npm-install": "*",
+    "moment": "*",
+    "mongoose": "^4.11.7",
+    "mongoose-q": "*",
+    "node-uuid": "*",
+    "qs": "^6.5.0",
+    "request": "^2.53.0",
+    "require": "^2.4.17",
+    "requirejs": "*",
+    "ua-parser-js": "^0.7.14"
+  }
+}

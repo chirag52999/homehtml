@@ -1,0 +1,96 @@
+define(['angular'],function(angular){
+    'use strict';
+    var LoginCtrl = angular.module('LoginCtrl', []);
+    LoginCtrl.controller('LoginCtrl', ['localStorageService','$window','$location', '$rootScope', '$scope', '$log','tmhDynamicLocale','LoginServices',
+    function (localStorageService, $window,$location, $rootScope, $scope, $log, tmhDynamicLocale,LoginServices) {
+        // $log.info("in login ctrl");
+        // tmhDynamicLocale.set('en-us');
+<<<<<<< HEAD
+=======
+        localStorageService.set("set",true);
+>>>>>>> 06a5094bde9b69212b63e328a63bb1d0d1eea49e
+
+        $scope.optionValue = ["English","Japanese"];
+        $scope.lname = $scope.optionValue[0];
+
+        $scope.changed = function() {
+            console.log("language selected is ----->",$scope.lname);
+        }
+        // $rootScope.on('$localeChangeSuccess', function(){
+        //    $log.info("Locale Change success"); 
+        // });
+        
+        //Remember Me Check--
+// TODO
+        /*var storageSize = localStorageService.length();
+        $log.info("Total locaStorage Length : "+storageSize);
+        console.log(localStorageService.get('rememberMe'));
+        if(localStorageService.get('rememberMe'))
+            {
+                $log.info("Stored Session");
+                var user = {username : localStorageService.get('username'), password : localStorageService.get('password')};
+                LoginServices.loginApi(user,$scope.loginSuccess,$scope.loginFail);
+            }else{
+                $log.info("Fresh Login");
+            }*/
+        // Remember Me Check ENDS --
+        $scope.loginSuccess = function(data, status, headers, config){
+				if (data.data.status === "success") {
+					$scope.disableLogin = false;
+					$scope.showLoader = false;
+                    //Remember Me
+                    if($scope.rememberMe)
+                    {
+                        // user DOES to be remembered
+                        localStorageService.set('rememberMe', "true");
+                        localStorageService.set('token',data.data.authToken);
+                        $log.info("Remembered: "+localStorageService.get('token'));
+                    }
+                    else{
+                        // user DOES NOT want to be remembered
+                        $window.sessionStorage.token = data.data.authToken;    
+                    }
+                    //Remember Me ENDS--
+                    $location.path("/home");
+                    $log.info("Login Successfull");
+				}else {
+						$scope.disableLogin = false;
+						$scope.showLoader = false;
+//						FlashService.Error(response.message);
+                    $log.info("Login Failuer: Invalid Creds");
+					}
+			}
+        $scope.loginFail = function(data, status, headers, config){
+				$scope.disableLogin = false;
+				$scope.showLoader = false;
+            $log.info("Server messages");
+				if (status === 401) {
+//                    FlashService.Error(response.message);
+				} else {
+//                    FlashService.Error(response.message);
+				}
+			}
+        $scope.loginController = function (hostName)
+			{   
+                console.log("in Login Controller");
+				$scope.disableLogin = true;
+				$scope.showLoader = true;
+                
+                if ($scope.password === "" || $scope.password === undefined) {
+//					FlashService.Error("Fill Username/password");
+                    console.log("Invalid password");
+				}
+				var user = {"username": $scope.username, "password": $scope.password};
+				if ($scope.username !== undefined || $scope.password !== undefined) {
+				    LoginServices.loginApi(user,$scope.loginSuccess,$scope.loginFail);
+				} else {
+					$scope.disableLogin = false;
+					$scope.showLoader = false;
+                    console.log("invalid username/password");
+//					FlashService.Error("Username and password are mandatory!");
+				}
+
+			}
+    }
+    ]);
+});

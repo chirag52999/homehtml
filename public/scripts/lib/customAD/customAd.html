@@ -1,0 +1,103 @@
+<style>
+    table, caption, tbody, tfoot, thead, tr, th, td {
+        border: 0;
+        outline: 0;
+        font-size: 100%;
+        background: transparent;
+        border-collapse: collapse;
+        border-spacing: 0;
+        line-height: 0;
+        box-shadow:1px !important;
+        padding: 0px;
+        margin: 0px;
+    }
+    .imageEditBox{
+        color:white;
+        opacity: 0;
+        text-align: center;
+        width: 100%;
+        height: 0;
+        position: absolute;
+        top:0px;
+        left: 0px;
+        z-index: 1;
+        cursor: pointer;
+        background-color: rgba(1,1,1,0.4);
+        -webkit-transition-property:opacity, height,padding-top ; /* Safari */
+        -webkit-transition-duration: .3s; /* Safari */
+        transition-property:opacity, height,padding-top;
+        transition-duration: .3s;
+    }
+    .imageEditBox span, .imageEditBox font{
+        display: none;
+    }
+
+    #customAdUpload:hover > .imageEditBox{
+        opacity: 1;
+        height:100%;
+        padding-top:50px;
+    }
+    #customAdUpload:hover  span{
+        display:block;
+    }
+
+    .uploadFileContent{
+        border: 1px solid grey;
+        margin: 0 auto;
+    }
+    .uploadFileContent:hover{
+        border: 2px solid green;
+    }
+    .onFileDragHover{
+        border: 2px solid green;
+    }
+
+
+</style>
+
+<div class="rectangle" id="customAdImage" ng-attr-style="height:{{customAdData.templateSize.height+'px'}};
+                        width:{{customAdData.templateSize.width+'px'}};">
+    <div id="customAdUpload" style="height:{{customAdData.templateSize.height+'px'}};width:{{customAdData.templateSize.width+'px'}};overflow:hidden;">
+        
+        <div id="customDropBox" ng-attr-style="background-image:url('{{customAdData.croppedImage}}');background-size:cover;
+                 background-repeat: no-repeat;background-position:center;height:{{customAdData.templateSize.height+'px'}};
+                 width:{{customAdData.templateSize.width+'px'}}position:absolute;" ng-class="customAdDropStyle">
+            <img id="" ng-attr-style="height:{{customAdData.templateSize.height+'px'}};width:{{customAdData.templateSize.width+'px'}}" ng-src="{{customAdData.croppedImage}}">
+        </div>
+        <div ng-if="customAdData.templateSize.height>100" class="imageEditBox uploadFileContent" style="padding:0px;">
+            <div ng-click="uploadTemplateImage()" ng-attr-style="border-bottom:white solid 1px;margin:0px 10px 0px 10px;height:50%;
+                        padding-top:{{customAdData.templateSize.height/4 - 10+'px'}};">
+                <span class="glyphicon glyphicon-picture" style="font-size:20px;"></span>
+                <span>Upload image</span>
+            </div>
+            <div ng-click="newImageImprove()" ng-attr-style="height:50%;
+                    padding-top:{{customAdData.templateSize.height/4 - 10+'px'}};margin:0px 10px 0px 10px;">
+                <span class="glyphicon glyphicon-pencil" style="font-size:20px;"></span>
+                <span>Crop image</span>
+            </div>
+        </div>
+        <div ng-if="customAdData.templateSize.height<=100" class="imageEditBox uploadFileContent" ng-attr-style="padding:0px;width: {{customAdData.templateSize.width+'px'}}">
+            <table ng-attr-style="width: {{customAdData.templateSize.width+'px'}}">
+                <tr>
+                    <td ng-click="uploadTemplateImage()" style="width:50%;">
+                        <div ng-attr-style="height:{{customAdData.templateSize.height+'px'}};border: none;">
+                            <p ng-attr-style="color: white;line-height: {{customAdData.templateSize.height-10+'px'}};" class="glyphicon glyphicon-picture">
+                                Upload image
+                            </p>
+                        </div>
+                    </td>
+                    <td ng-click="newImageImprove()">
+                        <div style="height:{{customAdData.templateSize.height+'px'}}; line-height:{{customAdData.templateSize.height+'px'}};border-left: 1px solid white !important;">
+                            <p ng-attr-style="color: white;line-height:{{customAdData.templateSize.height-10+'px'}};"  class="glyphicon glyphicon-pencil" >
+                                Crop image
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+
+    </div>
+</div>

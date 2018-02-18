@@ -1,0 +1,40 @@
+{
+  "errorCodes": {
+    "loginInvalidUserPass":"1000",
+    "loginSomethingWrongTA":"1001",
+    "loginEnterPass":"1002",
+    "NavSelectClientFirst":"1003",
+    "HomeSelectClientFirst":"1004",
+    "TargetAddressNotFound":"1005",
+    "TargetSomethingWrongTA":"1006",
+    "TargetSomethingWrong":"1007",
+    "TargetSelectCountry":"1008",
+    "TargetProvideAddress":"1009",
+    "TargetErrorCsv":"1010",
+    "BannerUnableUploadImg":"1011",
+    "SummarySomethingWrongTA":"1012",
+    "LandingUnableUploadImg":"1013",
+    "LandingAddressNotFound":"1014",
+    "LandingSomethingWrongTA":"1015",
+    "MyadsSelectClientFirst":"1016",
+    "MyadsSomethingWrong":"1017",
+    "MyadsUnableToSaveCampaign":"1018",
+    "MyadsSomethingWrongTA":"1019",
+    "MyadsStatusChanged":"1020",
+    "dashboardSelectClientFirst":"1021",
+    "dashboardUnableGeneratexls":"1022",
+    "dashboardSomethingWrong":"1023",
+    "dashboardSomethingWrongTA":"1024",
+    "alertServiceAdSaved":"1025",
+    "alertServiceUnableToSaveCampaign":"1026",
+    "alertServiceSomethingWrong":"1027",
+    "tokenTimeout":"1028",
+    "checkerXApiFail":"1029",
+    "WorkFlowStateError":"1030"
+
+
+  }
+}
+
+
+
