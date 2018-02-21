@@ -6,14 +6,22 @@ require.config({
         'angular' :'angular/angular.min',
         'angularRoute' : 'angular-route/angular-route.min',
 		'angularLocalStorage' : 'angular-local-storage/dist/angular-local-storage.min',
+        'tmh.dynamicLocale' : 'angular-dynamic-locale/dist/tmhDynamicLocale.min',
+        'useStaticFilesLoader' : 'angular-translate/dist/angular-translate-loader-static-files/angular-translate-loader-static-files.min',
+        'angular-translate' : 'angular-translate/dist/angular-translate.min',
         'bootstrap' : 'bootstrap/dist/js/bootstrap.min',
-        'LoginCtrl':'../app/LoginCtrl',
         'LoginServices': '../app/services/LoginServices',
         'AlertServices': '../app/services/AlertServices',
         'UtilityServices':'../app/services/UtilityServices',
         'AuthenticationServices' : '../app/services/AuthenticationServices',
         'TokenInterceptorService' : '../app/services/TokenInterceptorService',
         'angular-translate' : 'angular-translate/dist/angular-translate.min',
+        'AuthenticationServices' : '../app/services/AuthenticationServices',
+        'TokenInterceptorService' : '../app/services/TokenInterceptorService',
+        'AlertServices': '../app/services/AlertServices',
+        'UtilityServices':'../app/services/UtilityServices',
+        'loginCtrl':'../app/loginCtrl',
+        'navBarCtrl':'../app/navBarCtrl'
     },
     shim: {
         'angular': {
@@ -32,7 +40,7 @@ require.config({
 
 
 
-require(['require','jquery','angular','angularRoute','angularLocalStorage','app'], function () {
+require(['require','jquery','angular','angularRoute','angularLocalStorage', 'tmh.dynamicLocale','app'], function () {
     angular.element(document).ready(function() {
         console.log("%c1. Bootstrapping Libraries Success..","color: grey; font-size:12px;");
         angular.bootstrap(document, ['mainApp']);

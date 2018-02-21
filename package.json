@@ -14,13 +14,13 @@
     "grunt-contrib-requirejs": "*",
     "grunt-npm-install": "*",
     "moment": "*",
-    "mongoose": "^4.11.7",
+    "mongoose": "^4.13.11",
     "mongoose-q": "*",
     "node-uuid": "*",
-    "qs": "^6.5.0",
+    "qs": "^6.5.1",
     "request": "^2.53.0",
     "require": "^2.4.17",
     "requirejs": "*",
-    "ua-parser-js": "^0.7.14"
+    "ua-parser-js": "^0.7.17"
   }
 }

@@ -2,6 +2,15 @@ define([
     'angular',
 	'angularLocalStorage',
     'angularRoute',
+    'tmh.dynamicLocale',
+    'angular-translate',
+    'useStaticFilesLoader',
+    'AuthenticationServices',
+    'UtilityServices',
+    'TokenInterceptorService',
+    'AlertServices',
+    'navBarCtrl',
+    'loginCtrl'
 
 
 ], function (angular) {
@@ -10,6 +19,14 @@ define([
     var mainApp =  angular.module('mainApp', [
         'ngRoute',
 		'LocalStorageModule',
+        'tmh.dynamicLocale',
+        'pascalprecht.translate',
+        'AuthenticationServices',
+        'UtilityServices',
+        'TokenInterceptorService',
+        'AlertServices',
+        'navBarCtrl',
+        'loginCtrl'
     ]);
 
     mainApp.config(['$httpProvider','$logProvider', 'tmhDynamicLocaleProvider','$translateProvider',
@@ -41,12 +58,12 @@ define([
             $routeProvider.
             when('/login', {
                 templateUrl: 'partials/login.html',
-                controller: 'LoginCtrl',
+                controller: 'loginCtrl',
                 access: { requiredLogin: false }
             }).
             when('/home', {
                 templateUrl: 'partials/home.html',
-                controller: 'HomeCtrl',
+                controller: 'homeCtrl',
                 access: { requiredLogin: true }
             }).
             otherwise({

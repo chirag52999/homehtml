@@ -38,6 +38,8 @@ module.exports = function(app,models, serverInfo) {
 
     var forgotPassword_api = require('./forgotPasswordApi.js')(serverInfo);
     console.log("3. Api route is set for Forgot Password API");
+    var config = require('./configurations')(serverInfo);
+    var AlertECodes = require('../public/resources/error-codes.json');
 
     var appConfigurations = config.appConfigurations;
     var appPath = config.appPath;
