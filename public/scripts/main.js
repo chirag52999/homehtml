@@ -21,7 +21,8 @@ require.config({
         'AlertServices': '../app/services/AlertServices',
         'UtilityServices':'../app/services/UtilityServices',
         'loginCtrl':'../app/loginCtrl',
-        'navBarCtrl':'../app/navBarCtrl'
+        'navBarCtrl':'../app/navBarCtrl',
+        'signupCtrl':'../app/signupCtrl'
     },
     shim: {
         'angular': {

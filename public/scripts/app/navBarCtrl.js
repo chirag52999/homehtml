@@ -7,7 +7,7 @@ define(['angular'],function(angular){
             console.log("i am in navBarCtrl ctrl ----")
             $scope.isNotSignIn=function(){
                 console.log($location.path())
-                if($location.path()==="/signup"){
+                if($location.path()==="/signUp"){
                     return true;
                 }
                 else {
@@ -15,16 +15,19 @@ define(['angular'],function(angular){
                 }
 
             }
-            $scope.signin=function(){
-                $location.path("/login");
-            }
-            $scope.isLogin=function(){
-                if($location.path()==="/landingPage" || $location.path()==="/evengelizedCampaigns" || $location.path()==="/moreBrands" ){
+            $scope.notUser=function(){
+                if($location.path()==="/login"){
                     return true;
                 }
                 else {
                     return false;
                 }
+            }
+            $scope.signUp=function(){
+                $location.path("/signUp");
+            }
+            $scope.signIn=function(){
+                $location.path("/login");
             }
             $scope.signout=function(){
                 $location.path("/login");

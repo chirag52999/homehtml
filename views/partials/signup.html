@@ -24,7 +24,7 @@
     .panel-login{
         width: 40vw;
         margin-top: 15vh;
-        height: 50vh;
+        height: 60vh;
         border-radius: 20px;
         padding-top:35px;
         text-align:center;
@@ -36,6 +36,7 @@
     }
 
     .panel-login input[type="text"],
+    .panel-login input[type="email"],
     .panel-login input[type="password"] {
         height: 45px;
         border: 1px solid #ddd;
@@ -75,14 +76,16 @@
 </style>
 <div class="container" style="background-image: url('images/brandBack.jpg');" align="center">
     <div class="panel-login" >
-        <span class="heading">Sign In</span>
+        <span class="heading">Sign Up</span>
         <br>
         <input style="margin-top:40px" type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Enter Username" value="" required>
         <br>
+        <input style="margin-top:40px" type="email" name="email" id="username" tabindex="1" class="form-control" placeholder="Enter Email" value="" required>
+        <br>
         <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Enter Password" required>
         <br>
-        <button class="button button4" style="margin-top:40px;width: 30vw;height: 45px;" ng-click="signin()">Sign in</button>
+        <button class="button button4" style="margin-top:40px;width: 30vw;height: 45px;" ng-click="signin()">Sign Up</button>
         <br>
-        <span style="color:white;font-size: 18px;cursor:pointer">Forget Password ?</span>
+        <span style="color:white;font-size: 18px;cursor:pointer">By signing up, you agree to our <a href="#">Terms and Conditions</a></span>
     </div>
 </div>

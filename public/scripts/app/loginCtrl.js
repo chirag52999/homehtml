@@ -3,22 +3,8 @@ define(['angular'],function(angular){
     var loginCtrl = angular.module('loginCtrl', []);
     loginCtrl.controller('loginCtrl', ['$scope','$location',
         function ($scope,$location) {
-
-            console.log("i am in login ctrl ----");
-            $scope.openLoginDiv=false;
-
-            $scope.signUp=function()
-            {
-                $location.path("/signup")
-
-            };
-            $scope.loginInBy=function(){
-                $location.path("/landingPage")
-            }
+            console.log("in login ctrl ----");
 
         }
-
-
     ]);
-
 });

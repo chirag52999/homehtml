@@ -10,7 +10,8 @@ define([
     'TokenInterceptorService',
     'AlertServices',
     'navBarCtrl',
-    'loginCtrl'
+    'loginCtrl',
+    'signupCtrl'
 
 
 ], function (angular) {
@@ -26,7 +27,8 @@ define([
         'TokenInterceptorService',
         'AlertServices',
         'navBarCtrl',
-        'loginCtrl'
+        'loginCtrl',
+        'signupCtrl'
     ]);
 
     mainApp.config(['$httpProvider','$logProvider', 'tmhDynamicLocaleProvider','$translateProvider',
@@ -59,6 +61,11 @@ define([
             when('/login', {
                 templateUrl: 'partials/login.html',
                 controller: 'loginCtrl',
+                access: { requiredLogin: false }
+            }).
+            when('/signUp', {
+                templateUrl: 'partials/signup.html',
+                controller: 'signupCtrl',
                 access: { requiredLogin: false }
             }).
             when('/home', {
