@@ -71,18 +71,82 @@
         color:white;
 
     }
+    .lds-ellipsis {
+        display: inline-block;
+        position: relative;
+        width: 64px;
+        height: 64px;
+    }
+    .lds-ellipsis div {
+        position: absolute;
+        top: 7px;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: #fff;
+        animation-timing-function: cubic-bezier(0, 1, 1, 0);
+    }
+    .lds-ellipsis div:nth-child(1) {
+        left: 6px;
+        animation: lds-ellipsis1 0.6s infinite;
+    }
+    .lds-ellipsis div:nth-child(2) {
+        left: 6px;
+        animation: lds-ellipsis2 0.6s infinite;
+    }
+    .lds-ellipsis div:nth-child(3) {
+        left: 26px;
+        animation: lds-ellipsis2 0.6s infinite;
+    }
+    .lds-ellipsis div:nth-child(4) {
+        left: 45px;
+        animation: lds-ellipsis3 0.6s infinite;
+    }
+    @keyframes lds-ellipsis1 {
+        0% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    @keyframes lds-ellipsis3 {
+        0% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(0);
+        }
+    }
+    @keyframes lds-ellipsis2 {
+        0% {
+            transform: translate(0, 0);
+        }
+        100% {
+            transform: translate(19px, 0);
+        }
+    }
 
 </style>
 <div class="container" style="background-image: url('images/brandBack.jpg');" align="center">
     <div class="panel-login" >
-        <span class="heading">Sign In</span>
+        <span ng-show="!loginData.forgetView" class="heading">Sign In</span>
         <br>
-        <input style="margin-top:40px" type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Enter Username" value="" required>
+        <input style="margin-top:40px" ng-show="!loginData.forgetView" ng-model="loginData.username" type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Enter Username" value="" required>
+        <br >
+        <input type="password" name="password" ng-show="!loginData.forgetView" ng-model="loginData.password" id="password" tabindex="2" class="form-control" placeholder="Enter Password" required>
+        <br ng-show="!loginData.forgetView">
+        <button class="button button4" ng-show="!loginData.forgetView && !loginData.loader" style="margin-top:40px;width: 30vw;height: 45px;" ng-click="doLogin()">Sign In</button>
+        <button class="button button4" ng-show="!loginData.forgetView && loginData.loader" style="margin-top:40px;width: 30vw;height: 45px;"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></button>
+        <br ng-show="!loginData.forgetView">
+        <span ng-show="!loginData.forgetView" style="color:white;font-size: 18px;cursor:pointer" ng-click="loginData.forgetView=true">Forget Password ?</span>
+        <span ng-show="loginData.forgetView" class="heading">Forget Password</span>
         <br>
-        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Enter Password" required>
+        <input style="margin-top:40px" ng-show="loginData.forgetView" ng-model="loginData.email" type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Enter Email" value="" required>
         <br>
-        <button class="button button4" style="margin-top:40px;width: 30vw;height: 45px;" ng-click="signin()">Sign in</button>
+        <button class="button button4" ng-show="loginData.forgetView && !loginData.loader" style="margin-top:40px;width: 30vw;height: 45px;" ng-click="forgetPass()">Send Password</button>
+        <button class="button button4" ng-show="loginData.forgetView && loginData.loader" style="margin-top:40px;width: 30vw;height: 45px;"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></button>
         <br>
-        <span style="color:white;font-size: 18px;cursor:pointer">Forget Password ?</span>
+        <span ng-show="loginData.forgetView" style="color:white;font-size: 18px;cursor:pointer" ng-click="loginData.forgetView=false">Have Username and Password ? login</span>
     </div>
 </div>

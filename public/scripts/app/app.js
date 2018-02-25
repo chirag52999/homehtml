@@ -7,11 +7,13 @@ define([
     'useStaticFilesLoader',
     'AuthenticationServices',
     'UtilityServices',
+    'LoginServices',
     'TokenInterceptorService',
     'AlertServices',
     'navBarCtrl',
     'loginCtrl',
-    'signupCtrl'
+    'signupCtrl',
+    'homeCtrl'
 
 
 ], function (angular) {
@@ -24,11 +26,13 @@ define([
         'pascalprecht.translate',
         'AuthenticationServices',
         'UtilityServices',
+        'LoginServices',
         'TokenInterceptorService',
         'AlertServices',
         'navBarCtrl',
         'loginCtrl',
-        'signupCtrl'
+        'signupCtrl',
+        'homeCtrl'
     ]);
 
     mainApp.config(['$httpProvider','$logProvider', 'tmhDynamicLocaleProvider','$translateProvider',

@@ -10,10 +10,6 @@ define(['angular'], function (angular) {
 				$http({method: 'POST', url: '/api/loginApi', data: user})
 				.then(loginSuccess,loginFail);
 			},
-            logoutApi : function(user,logoutSuccess,logoutFail){
-                $http({method: 'POST', url: 'api/logoutApi', data: user})
-                .then(logoutSuccess, logoutFail);
-            },
 
             forgotPassword : function(request,forgotPasswordSuccess,forgotPasswordFailure){
                 $http({method: 'POST', url: 'api/forgotPassword', data: {'userName': request.name, "portalName": request.appId}

@@ -12,7 +12,6 @@ define(['angular'], function(angular) {
                     var authenticated = false;
                     if(localStorageService.get("auth_token")!==null || $window.sessionStorage.token != null)
                         authenticated = true;
-
                     return authenticated;
                 }
             }
