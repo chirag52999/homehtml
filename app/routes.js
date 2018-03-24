@@ -31,10 +31,9 @@ module.exports = function(app,models, serverInfo) {
     //BASIC ROUTING
 
     var login_api = require ('./loginApi.js')(serverInfo);
+    var sign_up = require ('./signUpApi.js')(serverInfo);
     console.log("1. Api route is set for LoginAPI");
 
-    var logout_api = require('./logoutApi.js')(serverInfo);
-    console.log("2. Api route is set for Logout API");
 
     var forgotPassword_api = require('./forgotPasswordApi.js')(serverInfo);
     console.log("3. Api route is set for Forgot Password API");
@@ -79,7 +78,7 @@ module.exports = function(app,models, serverInfo) {
         }
     }
     app.post('/api/loginApi',login_api.login);
-    app.post('/api/logoutApi',logout_api.logout);
+    app.post('/api/signUpApi',sign_up.signUp);
     app.post('/api/forgotPassword',forgotPassword_api.forgotPassword);
 
     function appendHeader(req, res, next) {

@@ -22,11 +22,11 @@
         background-color: rgba(255,255,255,0.5);
     }
     .panel-login{
-        width: 40vw;
-        margin-top: 15vh;
-        height: 60vh;
+        width: 50vw;
+        margin-top: 7vh;
+        height: 72vh;
         border-radius: 20px;
-        padding-top:35px;
+        padding-top:10px;
         text-align:center;
         display:inline-block;
         /*border: dashed 1px red;*/
@@ -41,13 +41,55 @@
         height: 45px;
         border: 1px solid #ddd;
         font-size: 16px;
-        width: 30vw;
+        width: 20vw;
         text-align:center;
         border-radius: 50px;
         -webkit-transition: all 0.1s linear;
         -moz-transition: all 0.1s linear;
         transition: all 0.1s linear;
         margin-top:40px
+    }
+    .panel-login textarea {
+        height: 70px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+        width: 42vw;
+        overflow: hidden;
+        text-align:center;
+        border-radius: 50px;
+        -webkit-transition: all 0.1s linear;
+        -moz-transition: all 0.1s linear;
+        transition: all 0.1s linear;
+    }
+    .panel-login select {
+        height: 45px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+        width: 20vw;
+        overflow: hidden;
+        text-align:center;
+        border-radius: 50px;
+        -webkit-transition: all 0.1s linear;
+        -moz-transition: all 0.1s linear;
+        transition: all 0.1s linear;
+    }
+    .panel-login textarea:hover,
+    .panel-login textarea:focus  {
+        outline: none;
+        -webkit-box-shadow: -1px 4px 19px -2px rgba(0,0,0,0.33);
+        -moz-box-shadow: -1px 4px 19px -2px rgba(0,0,0,0.33);
+        box-shadow: -1px 4px 19px -2px rgba(0,0,0,0.33);
+        text-align:center;
+        border-color: #ccc;
+    }
+    .panel-login select:hover,
+    .panel-login select:focus  {
+        outline: none;
+        -webkit-box-shadow: -1px 4px 19px -2px rgba(0,0,0,0.33);
+        -moz-box-shadow: -1px 4px 19px -2px rgba(0,0,0,0.33);
+        box-shadow: -1px 4px 19px -2px rgba(0,0,0,0.33);
+        text-align:center;
+        border-color: #ccc;
     }
 
     .panel-login input:hover,
@@ -70,7 +112,10 @@
     .panel-login .heading{
         font-size: 45px;
         color:white;
-
+    }
+    .panel-login .tittle{
+        font-size: 20px;
+        color:black;
     }
 
 </style>
@@ -78,13 +123,34 @@
     <div class="panel-login" >
         <span class="heading">Sign Up</span>
         <br>
-        <input style="margin-top:40px" type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Enter Username" value="" required>
         <br>
-        <input style="margin-top:40px" type="email" name="email" id="username" tabindex="1" class="form-control" placeholder="Enter Email" value="" required>
+        <span class="tittle" style="margin-top:40px">Tell us about your Profession</span>
         <br>
-        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Enter Password" required>
+        <select style="margin-top:10px;text-align-last: center;" ng-model="signUpData.companyType">
+            <option value="ADVERTISERS">ADVERTISERS</option>
+            <option value="SSP">SSP</option>
+            <option value="DSP">DSP</option>
+            <option value="PUBLISHER">PUBLISHER</option>
+            <option value="AGENCY">AGENCY</option>
+            <option value="OTHER">OTHER</option>
+        </select> &nbsp &nbsp &nbsp
+        <input style="margin-top:10px" type="text" name="companyName" id="companyName" tabindex="1" class="form-control" ng-model="signUpData.companyName" placeholder="Company Name" value="" required>
         <br>
-        <button class="button button4" style="margin-top:40px;width: 30vw;height: 45px;" ng-click="signin()">Sign Up</button>
+        <br>
+        <span class="tittle" style="margin-top:40px">Tell us about yourself</span>
+        <br>
+        <input style="margin-top:10px" type="text" ng-model="signUpData.userName" name="username" id="username" tabindex="2" class="form-control" placeholder="Name/Username" value="" required> &nbsp &nbsp &nbsp
+        <input style="margin-top:10px" type="text" ng-model="signUpData.email" name="email" id="username" tabindex="3" class="form-control" placeholder="Enter Email" value="" required>
+        <br>
+        <input style="margin-top:10px" type="password" ng-model="signUpData.pass" name="password" id="password" tabindex="4" class="form-control" placeholder="Password" value="" required> &nbsp &nbsp &nbsp
+        <input style="margin-top:10px" ng-model="signUpData.confirmPass" type="password" name="Confirmpassword" id="Confirmpassword" tabindex="5" class="form-control" placeholder="Confirm Password" value="" required>
+        <br>
+        <br>
+        <span class="tittle" style="margin-top:40px">What Got you interseted in Adhop ?</span>
+        <br>
+        <textarea style="margin-top:10px" ng-model="signUpData.interestIn" name="Interset"  tabindex="6" class="form-control" placeholder="Interseted in Adhop because" value="" required></textarea>
+        <br>
+        <button class="button button4" style="margin-top:20px;width: 20vw;height: 45px;" tabindex="7" ng-click="doSignUp()">Sign Up</button>
         <br>
         <span style="color:white;font-size: 18px;cursor:pointer">By signing up, you agree to our <a href="#">Terms and Conditions</a></span>
     </div>

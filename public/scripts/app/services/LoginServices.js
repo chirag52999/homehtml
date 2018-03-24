@@ -10,11 +10,24 @@ define(['angular'], function (angular) {
 				$http({method: 'POST', url: '/api/loginApi', data: user})
 				.then(loginSuccess,loginFail);
 			},
-
             forgotPassword : function(request,forgotPasswordSuccess,forgotPasswordFailure){
-                $http({method: 'POST', url: 'api/forgotPassword', data: {'userName': request.name, "portalName": request.appId}
+                $http({method: 'POST', url: '/api/forgotPassword', data: {'userName': request.name, "portalName": request.appId}
                                     ,headers: {'Content-Type': 'application/json'}})
                 .then(forgotPasswordSuccess,forgotPasswordFailure);
+            },
+            signUp : function(request,signUpSuccess,signUpFailure){
+                $http({method: 'POST', url: '/api/signUpApi',
+                    data: {
+                        "companyType": request.companyType,
+                        "companyName":request.companyName,
+                        "userName": request.userName,
+                        "email":request.email,
+                        "pass": request.pass,
+                        "confirmPass":request.confirmPass,
+                        "interestIn":request.interestIn
+                    }
+                    ,headers: {'Content-Type': 'application/json'}})
+                .then(signUpSuccess,signUpFailure);
             }
         }
     }])

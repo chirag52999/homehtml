@@ -23,7 +23,8 @@ require.config({
         'loginCtrl':'../app/loginCtrl',
         'navBarCtrl':'../app/navBarCtrl',
         'signupCtrl':'../app/signupCtrl',
-        'homeCtrl':'../app/homeCtrl'
+        'homeCtrl':'../app/homeCtrl',
+        'welcomeCtrl':'../app/welcomeCtrl'
     },
     shim: {
         'angular': {

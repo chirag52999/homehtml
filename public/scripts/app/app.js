@@ -13,7 +13,8 @@ define([
     'navBarCtrl',
     'loginCtrl',
     'signupCtrl',
-    'homeCtrl'
+    'homeCtrl',
+    'welcomeCtrl'
 
 
 ], function (angular) {
@@ -32,7 +33,8 @@ define([
         'navBarCtrl',
         'loginCtrl',
         'signupCtrl',
-        'homeCtrl'
+        'homeCtrl',
+        'welcomeCtrl'
     ]);
 
     mainApp.config(['$httpProvider','$logProvider', 'tmhDynamicLocaleProvider','$translateProvider',
@@ -77,8 +79,13 @@ define([
                 controller: 'homeCtrl',
                 access: { requiredLogin: true }
             }).
+            when('/welcome', {
+                templateUrl: 'partials/welcome.html',
+                controller: 'welcomeCtrl',
+                access: { requiredLogin: false }
+            }).
             otherwise({
-                    redirectTo: '/login'
+                    redirectTo: '/welcome'
             });
         }
 
@@ -97,19 +104,19 @@ define([
             console.log("%c2. Application deployed successfully.\n"+"\t App Description: "+$rootScope.app.name+"\n \t"+$rootScope.app.description+"@"+$rootScope.app.year+"\n \t ==========================\n", "color: green; font-size:12px;");
             $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
                 if (nextRoute.access===undefined) {
-                    $location.path("/login");
+                    $location.path("/welcome");
                 }else if (nextRoute.access.requiredLogin && !AuthenticationServices.isLoggedIn()) {
-                    $location.path("/login");
+                    $location.path("/welcome");
                 }
 
                 var disableBackButton = false;
                 if(nextRoute == undefined) {
-                    var newUrl = '/login';
+                    var newUrl = '/welcome';
                 } else {
                     var newUrl = nextRoute.$$route.originalPath;
                 }
                 if(currentRoute == undefined) {
-                    var oldUrl = '/login';
+                    var oldUrl = '/welcome';
                 } else {
                     var oldUrl = currentRoute.$$route.originalPath;
                 }

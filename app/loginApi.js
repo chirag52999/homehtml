@@ -25,38 +25,26 @@ module.exports = function (serverInfo) {
                 return false;
         }
     };
-    function buildRegions(regions) {
-        var regionsByCountry={
-            "Japan":regions
-        }
-        return regionsByCountry;
-    }
     return {
         login:function(req,res)  {
-
             console.log("Log-in Api Call Invoked",req.body);
             var request = require('request');
             var username = req.body.userName;
             var password = req.body.password;
             var appName = req.headers.appname;
-            var loginType = req.body.loginType;
+            var portalName = req.body.portalName;
+            var loginType = "employee";
             console.log("username:", username, "password: ", password, "appName: ", appName);
-
-
             // CALLING AUTHENTICATION API
-            var chalkLoginURL = {
+            var loginUrl = {
                 url: 'http://'+serverInfo.apiHost+':'+serverInfo.backend_port+'/dentsu/login/v1',
                 method:'post',
-                json: {"username" : username,"password" : password,"appname":appName, "loginType":loginType,"portalName": req.body.portalName},
+                json: {"username" : username,"password" : password,"appname":appName, "loginType":loginType,"portalName": portalName},
                 headers: {'Content-Type': 'application/json'}
             };
-            console.log("Chalk Login Url",chalkLoginURL);
-
-            request(chalkLoginURL, function(error, response, body) {
-
+            console.log("Chalk Login Url",loginUrl);
+            request(loginUrl, function(error, response, body) {
                 try {
-                  //  console.log("API Call Success with status code: ",response.statusCode);
-                    console.log("Error details: ",body.response.regions);
                     console.log("Response from API: ",(null===body.response?"Response is null":body.response.userInfo));
                     if(!error && response.statusCode == 200 ) { //body != undefined && body.response != undefined && body.status != -1
                         var responseData;
@@ -65,30 +53,18 @@ module.exports = function (serverInfo) {
                         {
                             console.log("Setting response...");
                             var userInfo = responseData.response.userInfo;
-                            var chalkToken = responseData.response.token;
+                            var loginToken = responseData.response.token;
                             var clientlist = JSON.stringify(responseData.response.clientlist);
-                            var iabcategories = JSON.stringify(responseData.response.iabcategories);
-                            var countries = JSON.stringify(responseData.response.countries);
-                            if(userInfo!=null && chalkToken!=null && clientlist!=null && iabcategories!=null && countries!=null){
+                            if(userInfo!=null && loginToken!=null && clientlist!=null){
                                 var loginResponse = {
                                     "status": "success",
                                     "message": "",
                                     "userInfo": userInfo,
-                                    "auth_token": chalkToken,
+                                    "auth_token": loginToken,
                                     "refreshToken":responseData.response.refreshToken,
                                     "clientlist" : clientlist,
-                                    "iabcategories" : iabcategories,
-                                    "countries" : countries,
-                                    "AlertErrorCodes":AlertECodes,
-                                    "client":JSON.parse(clientlist)[0],
-                                    "clientLogo":"",
-                                    "userAcess":userInfo.userAccess,
-                                    "appTierId":userInfo.appTierId,
-                                    "tiers":responseData.response.tiers,
-                                    "prefectureData":(!isVoid(responseData.response) && !isVoid(responseData.response.regions))?buildRegions(responseData.response.regions):[]
                                 };
                                 res.json(loginResponse);
-                                //console.log("data sent to UI is: ",loginResponse);
                             }else {
                                 res.json({
                                     "status": "failure",
