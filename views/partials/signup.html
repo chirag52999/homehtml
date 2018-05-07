@@ -1,32 +1,16 @@
-<div ng-include src="'shared_views/navBar.html'"></div>
+<div ng-include src="'shared_views/navBar.html'" style="position: fixed;z-index: 3;"></div>
 <style>
-    .container {
-        height:90vh;
-        margin-top:80px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        position: relative;
-        z-index: 1;
-    }
 
-    .container::before {
-        content: "";
-        display: block;
-        position: absolute;
-        z-index: -1;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background-color: rgba(255,255,255,0.5);
-    }
+
+
     .panel-login{
         width: 50vw;
         margin-top: 7vh;
         height: 72vh;
+        min-height: 560px;
+        min-width: 450px;
         border-radius: 20px;
-        padding-top:10px;
+        padding-top:1vh;
         text-align:center;
         display:inline-block;
         /*border: dashed 1px red;*/
@@ -42,6 +26,7 @@
         border: 1px solid #ddd;
         font-size: 16px;
         width: 20vw;
+        min-width: 170px;
         text-align:center;
         border-radius: 50px;
         -webkit-transition: all 0.1s linear;
@@ -51,9 +36,12 @@
     }
     .panel-login textarea {
         height: 70px;
+        max-height: 70px;
         border: 1px solid #ddd;
         font-size: 16px;
         width: 42vw;
+        max-width: 42vw;
+        min-width: 380px;
         overflow: hidden;
         text-align:center;
         border-radius: 50px;
@@ -122,7 +110,6 @@
 <div class="container" style="background-image: url('images/brandBack.jpg');" align="center">
     <div class="panel-login" >
         <span class="heading">Sign Up</span>
-        <br>
         <br>
         <span class="tittle" style="margin-top:40px">Tell us about your Profession</span>
         <br>

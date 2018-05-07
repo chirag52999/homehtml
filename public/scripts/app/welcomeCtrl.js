@@ -3,105 +3,63 @@ define(['angular'],function(angular){
     var welcomeCtrl = angular.module('welcomeCtrl', []);
     welcomeCtrl.controller('welcomeCtrl', ['$scope','$location','UtilityServices','localStorageService','LoginServices','$timeout',
         function ($scope,$location,UtilityServices,localStorageService,LoginServices,$timeout) {
-
-            var dataPoints1 = [];
-            var dataPoints2 = [];
-
-            var chart = new CanvasJS.Chart("chartContainer", {
-                zoomEnabled: true,
-                title: {
-                    text: "Share Value of Two Companies"
-                },
-                axisX: {
-                    title: "chart updates every 3 secs"
-                },
-                axisY:{
-                    includeZero: false
-                },
-                toolTip: {
-                    shared: false
-                },
-                legend: {
-                    cursor:"pointer",
-                    verticalAlign: "top",
-                    fontSize: 22,
-                    fontColor: "dimGrey",
-                    itemclick : toggleDataSeries
-                },
-                data: [{
-                    type: "line",
-                    xValueType: "dateTime",
-                    yValueFormatString: "$####.00",
-                    xValueFormatString: "hh:mm:ss TT",
-                    showInLegend: true,
-                    name: "Company A",
-                    dataPoints: dataPoints1
-                },
-                    {
-                        type: "line",
-                        xValueType: "dateTime",
-                        yValueFormatString: "$####.00",
-                        showInLegend: true,
-                        name: "Company B" ,
-                        dataPoints: dataPoints2
+            var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    },{
+                        label: '# of 2',
+                        data: [3, 44, 5, 6, 1, 9],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
                     }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
             });
-
-            function toggleDataSeries(e) {
-                if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                    e.dataSeries.visible = false;
-                }
-                else {
-                    e.dataSeries.visible = true;
-                }
-                chart.render();
-            }
-
-            var updateInterval = 3000;
-// initial value
-            var yValue1 = 600;
-            var yValue2 = 605;
-
-            var time = new Date;
-// starting at 9.30 am
-            time.setHours(9);
-            time.setMinutes(30);
-            time.setSeconds(0);
-            time.setMilliseconds(0);
-
-            function updateChart(count) {
-                count = count || 1;
-                var deltaY1, deltaY2;
-                for (var i = 0; i < count; i++) {
-                    time.setTime(time.getTime()+ updateInterval);
-                    deltaY1 = .5 + Math.random() *(-.5-.5);
-                    deltaY2 = .5 + Math.random() *(-.5-.5);
-
-                    // adding random value and rounding it to two digits.
-                    yValue1 = Math.round((yValue1 + deltaY1)*100)/100;
-                    yValue2 = Math.round((yValue2 + deltaY2)*100)/100;
-
-                    // pushing the new values
-                    dataPoints1.push({
-                        x: time.getTime(),
-                        y: yValue1
-                    });
-                    dataPoints2.push({
-                        x: time.getTime(),
-                        y: yValue2
-                    });
-                }
-
-                // updating legend text with  updated with y Value
-                chart.options.data[0].legendText = " Company A  $" + yValue1;
-                chart.options.data[1].legendText = " Company B  $" + yValue2;
-                chart.render();
-            }
-// generates first set of dataPoints
-            updateChart(100);
-            setInterval(function(){updateChart()}, updateInterval);
-
-
         }
     ]);
 });

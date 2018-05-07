@@ -37,7 +37,7 @@ module.exports = function (serverInfo) {
             console.log("username:", username, "password: ", password, "appName: ", appName);
             // CALLING AUTHENTICATION API
             var loginUrl = {
-                url: 'http://'+serverInfo.apiHost+':'+serverInfo.backend_port+'/dentsu/login/v1',
+                url: 'http://'+serverInfo.apiHost+':'+serverInfo.backend_port+'/dentsu/forcelogin/v1',
                 method:'post',
                 json: {"username" : username,"password" : password,"appname":appName, "loginType":loginType,"portalName": portalName},
                 headers: {'Content-Type': 'application/json'}

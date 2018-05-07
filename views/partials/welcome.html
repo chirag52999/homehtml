@@ -1,29 +1,5 @@
-<div ng-include src="'shared_views/navBar.html'"></div>
-<style>
-    .container {
-        height:90vh;
-        margin-top:80px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        position: relative;
-        z-index: 1;
-    }
-
-    .container::before {
-        content: "";
-        display: block;
-        position: absolute;
-        z-index: -1;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background-color: rgba(255,255,255,0.5);
-    }
-
-
-</style>
+<div ng-include src="'shared_views/navBar.html'" style="position: fixed;z-index: 3;"></div>
 <div class="container" style="background-image: url('images/brandBack.jpg');" align="center">
-    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <!--<div id="chartContainer" style="height: 370px; width: 100%;"></div>-->
+    <canvas id="myChart" width="110" height="110"></canvas>
 </div>
